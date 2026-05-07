@@ -15,13 +15,22 @@ public class ArcaneTome : AfterElementReactRelics
     public override RelicRarity Rarity => RelicRarity.Rare;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 
-    protected override async Task AfterElementReact(Creature owner, decimal amount, Creature? applier, CardModel? cardSource)
+    protected override async Task AfterElementReact(
+        Creature owner,
+        decimal amount,
+        Creature? applier,
+        CardModel? cardSource
+    )
     {
         if (owner != Owner.Creature)
         {
             return;
         }
         Flash();
-        await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), DynamicVars.Cards.BaseValue, Owner);
+        await CardPileCmd.Draw(
+            new ThrowingPlayerChoiceContext(),
+            DynamicVars.Cards.BaseValue,
+            Owner
+        );
     }
 }

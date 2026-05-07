@@ -27,7 +27,12 @@ public class ElementalPendant : AfterElementReactRelics
         }
     }
 
-    protected override async Task AfterElementReact(Creature owner, decimal amount, Creature? applier, CardModel? cardSource)
+    protected override async Task AfterElementReact(
+        Creature owner,
+        decimal amount,
+        Creature? applier,
+        CardModel? cardSource
+    )
     {
         if (owner != Owner.Creature || UsedThisTurn)
         {
