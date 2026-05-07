@@ -2,7 +2,6 @@ using LittleWizard.LittleWizardCode.Api;
 using LittleWizard.LittleWizardCode.Api.Relics;
 using LittleWizard.LittleWizardCode.Powers.Elements;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;

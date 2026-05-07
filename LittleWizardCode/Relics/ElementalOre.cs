@@ -1,7 +1,5 @@
-using BaseLib.Utils;
 using LittleWizard.LittleWizardCode.Api;
 using LittleWizard.LittleWizardCode.Api.Relics;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
