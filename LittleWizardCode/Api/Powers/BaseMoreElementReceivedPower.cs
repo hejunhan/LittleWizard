@@ -17,10 +17,10 @@ public abstract class BaseMoreElementReceivedPower : CustomPowerModel
     private string GetIconBaseName() => Id.Entry.RemovePrefix().ToLowerInvariant();
 
     public override string CustomPackedIconPath =>
-        $"res://{LittleWizardCode.MainFile.ModId}/images/powers/{GetIconBaseName()}.png";
+        $"res://{MainFile.ModId}/images/powers/{GetIconBaseName()}.png";
 
     public override string CustomBigIconPath =>
-        $"res://{LittleWizardCode.MainFile.ModId}/images/powers/{GetIconBaseName()}.png";
+        $"res://{MainFile.ModId}/images/powers/{GetIconBaseName()}.png";
 
     public override bool TryModifyPowerAmountReceived(
         PowerModel canonicalPower,

@@ -12,17 +12,17 @@ public abstract class LittleWizardPower : CustomPowerModel
     protected virtual string GetBaseName() => Id.Entry.RemovePrefix().ToLowerInvariant();
 
     public override string CustomPackedIconPath =>
-        $"res://{LittleWizardCode.MainFile.ModId}/images/powers/{GetBaseName()}.png";
+        $"res://{MainFile.ModId}/images/powers/{GetBaseName()}.png";
 
     public override string CustomBigIconPath =>
-        $"res://{LittleWizardCode.MainFile.ModId}/images/powers/{GetBaseName()}.png";
+        $"res://{MainFile.ModId}/images/powers/{GetBaseName()}.png";
 
     protected virtual bool HasCustomAudio => false;
 
     protected virtual string CustomAudioName => $"{GetBaseName()}.wav";
 
     private string CustomAudioPath =>
-        $"res://{LittleWizardCode.MainFile.ModId}/audios/powers/{CustomAudioName}";
+        $"res://{MainFile.ModId}/audios/powers/{CustomAudioName}";
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {

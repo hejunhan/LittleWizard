@@ -34,7 +34,7 @@ public class LittleWizard : PlaceholderCharacterModel
             ModelDb.Card<Callback>(),
         ];
 
-    public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<FireElementGem>()];
+    public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<ElementalOre>()];
 
     public override CustomEnergyCounter? CustomEnergyCounter =>
         new CustomEnergyCounter(
