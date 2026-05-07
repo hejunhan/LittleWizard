@@ -11,7 +11,8 @@ namespace LittleWizard.LittleWizardCode.Cards.Uncommon;
 public class ManagerMaster()
     : LittleWizardCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ManagerMasterPower>(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new PowerVar<ManagerMasterPower>(1)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
