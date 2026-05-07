@@ -21,8 +21,7 @@ public abstract class LittleWizardPower : CustomPowerModel
 
     protected virtual string CustomAudioName => $"{GetBaseName()}.wav";
 
-    private string CustomAudioPath =>
-        $"res://{MainFile.ModId}/audios/powers/{CustomAudioName}";
+    private string CustomAudioPath => $"res://{MainFile.ModId}/audios/powers/{CustomAudioName}";
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
