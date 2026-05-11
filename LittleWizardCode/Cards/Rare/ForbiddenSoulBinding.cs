@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using LittleWizard.LittleWizardCode.Api.Animation;
 using LittleWizard.LittleWizardCode.Api.Cards;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -16,7 +17,7 @@ public class ForbiddenSoulBinding()
             new CalculationBaseVar(15),
             new ExtraDamageVar(1),
             new CalculatedDamageVar(ValueProp.Unblockable).WithMultiplier(
-                (card, target) => target?.Block ?? 0
+                (_, target) => target?.Block ?? 0
             ),
         ];
 
@@ -27,7 +28,13 @@ public class ForbiddenSoulBinding()
     {
         if (cardPlay.Target == null)
             return;
-        await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
+        await CreatureCmd.Damage(
+            choiceContext,
+            cardPlay.Target,
+            DynamicVars.CalculatedDamage.Calculate(cardPlay.Target),
+            ValueProp.Unblockable,
+            this
+        );
         await AnimationHelper.TriggerCastAnimationOwner(this);
     }
 
