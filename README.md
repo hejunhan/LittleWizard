@@ -21,6 +21,60 @@ You may not copy, modify, distribute, reverse‑engineer, or use any file from t
 
 **Summary**: You are free to use, modify, and distribute the code outside the four listed folders under the terms of the MIT license, but the content inside those folders is proprietary and not open source.
 
+## Development
+
+**Prerequisites:**
+- Install [.NET SDK 9](https://dotnet.microsoft.com/download/dotnet/9.0)
+- Install [Godot Engine 4.5.1 Mono(.NET)](https://godotengine.org/download/archive/4.5.1-stable/)
+- Install export templates in Godot (Editor → Manage Export Templates → Download and Install)
+
+**Getting Started:**
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd LittleWizard
+   ```
+
+2. Restore NuGet packages:
+   ```bash
+   dotnet restore
+   ```
+
+3. Install Spine-Godot plugin:
+   - Download the plugin from [spine-godot-extension-4.2-4.5.1-stable.zip](https://spine-godot.s3.eu-central-1.amazonaws.com/4.2/4.5.1-stable/spine-godot-extension-4.2-4.5.1-stable.zip)
+   - Extract the ZIP file and locate the `bin` folder inside
+   - Copy the entire `bin` folder directly to the project root directory (same level as `project.godot`)
+
+4. Create configuration file:
+   - Create a file named `Directory.Build.props` in the project root directory
+   - Add the following content (replace with your actual paths):
+     ```xml
+     <Project>
+         <PropertyGroup>
+             <GodotPath>Your Godot installation directory</GodotPath>
+             <SteamLibraryPath>Your Steam library directory containing Slay the Spire 2</SteamLibraryPath>
+             <!-- When DebugMode is true, debug files will be automatically copied to the Slay the Spire 2 mod directory -->
+             <DebugMode>true or false</DebugMode>
+         </PropertyGroup>
+     </Project>
+     ```
+
+5. Code Formatting:
+   - This project uses [CSharpier](https://csharpier.com/) for code formatting
+   - Install CSharpier (recommended as a VS Code or Rider plugin)
+   - Code is automatically formatted on build, or you can run the format command manually
+
+6. Start Developing:
+   - Write code and scenes in the Godot editor
+   - Use `dotnet build` to compile only the DLL files
+   - Use `dotnet release` to not only compile DLLs, but also export PCK files and copy JSON files, PDB files (if DebugMode is enabled) to the Slay the Spire 2 mod directory
+
+7. Extended Reading:
+- **How to Enable Debugger**: https://github.com/Alchyr/ModTemplate-StS2/wiki/Testing-and-Debugging#attaching-a-debugger
+- **Slay the Spire 2 Mod Template Setup Guide**: https://github.com/Alchyr/ModTemplate-StS2/wiki
+- **BaseLib Wiki**: https://alchyr.github.io/BaseLib-Wiki/
+
 ## Content
 
 - Adds a new playable character: **Little Wizard**
