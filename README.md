@@ -71,9 +71,9 @@ You may not copy, modify, distribute, reverse‑engineer, or use any file from t
    - Use `dotnet release` to not only compile DLLs, but also export PCK files and copy JSON files, PDB files (if DebugMode is enabled) to the Slay the Spire 2 mod directory
 
 7. Extended Reading:
-- **How to Enable Debugger**: https://github.com/Alchyr/ModTemplate-StS2/wiki/Testing-and-Debugging#attaching-a-debugger
-- **Slay the Spire 2 Mod Template Setup Guide**: https://github.com/Alchyr/ModTemplate-StS2/wiki
-- **BaseLib Wiki**: https://alchyr.github.io/BaseLib-Wiki/
+   - **How to Enable Debugger**: https://github.com/Alchyr/ModTemplate-StS2/wiki/Testing-and-Debugging#attaching-a-debugger
+   - **Slay the Spire 2 Mod Template Setup Guide**: https://github.com/Alchyr/ModTemplate-StS2/wiki
+   - **BaseLib Wiki**: https://alchyr.github.io/BaseLib-Wiki/
 
 ## Content
 
