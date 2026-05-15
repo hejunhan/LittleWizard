@@ -29,6 +29,6 @@ public class DeepenMemory()
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }
