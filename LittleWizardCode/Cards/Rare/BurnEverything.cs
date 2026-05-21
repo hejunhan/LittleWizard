@@ -31,7 +31,13 @@ public class BurnEverything()
             DynamicVarsHelper.GetPowerVar<FireElement>(DynamicVars).BaseValue
             * ResolveEnergyXValue();
         foreach (var enemy in CombatState!.Enemies)
+        {
+            if (enemy.IsDead)
+            {
+                continue;
+            }
             await PowerCmd.Apply<FireElement>(choiceContext, enemy, xValue, Owner.Creature, this);
+        }
         await Utils.GivePower<BurnEverythingPower>(this, cardPlay, choiceContext);
         await AnimationHelper.TriggerCastAnimationOwner(this);
     }
