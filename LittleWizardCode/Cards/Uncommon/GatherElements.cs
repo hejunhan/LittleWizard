@@ -20,17 +20,17 @@ public class GatherElements()
     {
         if (IsUpgraded)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await PowerCmd.Apply<GatherElementsUpgradePower>(
-                cardPlay.Target,
-                DynamicVarsHelper.GetPowerVar<GatherElementsUpgradePower>(DynamicVars).BaseValue,
+                choiceContext,
+                Owner.Creature,
+                DynamicVarsHelper.GetPowerVar<GatherElementsPower>(DynamicVars).BaseValue,
                 Owner.Creature,
                 this
             );
         }
         else
         {
-            await Utils.GivePower<GatherElementsPower>(this, cardPlay);
+            await Utils.GivePower<GatherElementsPower>(this, cardPlay, choiceContext);
         }
 
         await AnimationHelper.TriggerCastAnimationOwner(this);

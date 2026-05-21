@@ -1,7 +1,9 @@
 using LittleWizard.LittleWizardCode.Api.Relics;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
@@ -28,6 +30,7 @@ public class ElementalPendant : AfterElementReactRelics
     }
 
     protected override async Task AfterElementReact(
+        PlayerChoiceContext ctx,
         Creature owner,
         decimal amount,
         Creature? applier,
@@ -41,5 +44,14 @@ public class ElementalPendant : AfterElementReactRelics
         Flash();
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         UsedThisTurn = true;
+    }
+
+    public override Task AfterPlayerTurnStartEarly(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player == Owner)
+        {
+            UsedThisTurn = false;
+        }
+        return Task.CompletedTask;
     }
 }

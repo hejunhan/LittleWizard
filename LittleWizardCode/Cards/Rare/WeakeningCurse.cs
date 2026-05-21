@@ -14,18 +14,17 @@ public class WeakeningCurse()
     : LittleWizardCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(11, ValueProp.Move), new PowerVar<StrengthPower>(-8)];
+        [new DamageVar(11, ValueProp.Move), new PowerVar<StrengthPower>(-4)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
-        await Utils.GivePower<StrengthPower>(this, cardPlay);
+        await Utils.GivePower<StrengthPower>(this, cardPlay, choiceContext);
         await AnimationHelper.TriggerCastAnimationOwner(this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);
-        DynamicVars.Strength.UpgradeValueBy(-3);
     }
 }
