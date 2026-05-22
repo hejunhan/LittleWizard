@@ -28,6 +28,7 @@ public class NotMyTime()
                 PileType
                     .Exhaust.GetPile(Owner)
                     .Cards.Where(model => !model.Keywords.Contains(CardKeyword.Unplayable))
+                    .Where(c => c.Type == CardType.Attack)
             );
             if (card == null)
                 continue;
