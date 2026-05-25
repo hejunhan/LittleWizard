@@ -15,7 +15,6 @@ namespace LittleWizard.LittleWizardCode.Cards.Uncommon;
 public class FreezingRay()
     : LittleWizardCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(3, ValueProp.Move), new RepeatVar(1)];
 
