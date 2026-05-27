@@ -26,7 +26,6 @@ public class Fireball()
     {
         await CommonActions
             .CardAttack(this, play)
-            .WithHitFx("vfx/vfx_fire_ball")
             .Execute(choiceContext);
 
         await Utils.GivePower<FireElement>(this, play, choiceContext);
