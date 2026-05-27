@@ -24,10 +24,7 @@ public class Fireball()
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions
-            .CardAttack(this, play)
-            .WithHitFx("vfx/vfx_fire_ball")
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, play).Execute(choiceContext);
 
         await Utils.GivePower<FireElement>(this, play, choiceContext);
     }
