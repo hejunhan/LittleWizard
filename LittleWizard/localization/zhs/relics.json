@@ -1,6 +1,6 @@
 {
-    "LITTLEWIZARD-FIRE_ELEMENT_GEM.description": "",
-    "LITTLEWIZARD-FIRE_ELEMENT_GEM.title": "FireElementGem",
+    "LITTLEWIZARD-FIRE_ELEMENT_GEM.description": "在每场战斗开始时，给予所有敌人2层火元素。",
+    "LITTLEWIZARD-FIRE_ELEMENT_GEM.title": "火元素宝石",
     "LITTLEWIZARD-FIRE_ELEMENT_GEM.flavor": "",
     "LITTLEWIZARD-ELEMENTAL_ORE.description": "当你给予同一名敌人两种不同种类的元素时，将触发元素结合。每回合首次触发元素结合时，下回合额外抽1张牌。",
     "LITTLEWIZARD-ELEMENTAL_ORE.flavor": "",
