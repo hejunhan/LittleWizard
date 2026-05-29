@@ -2,11 +2,13 @@ using LittleWizard.LittleWizardCode.Api.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace LittleWizard.LittleWizardCode.Powers.Elements.Reacts;
@@ -40,6 +42,10 @@ public class FireEarthReactor : LittleWizardPower
             return;
         if (command.Attacker?.Side != CombatSide.Player)
             return;
+        if (command.ModelSource is not CardModel card || card.Type != CardType.Attack)
+            return;
+        if (!command.GetPossibleTargets().Contains(Owner))
+            return;
 
         await CreatureCmd.Damage(
             choiceContext,
@@ -61,6 +67,9 @@ public class FireEarthReactor : LittleWizardPower
     )
     {
         if (target != Owner || dealer == null || result.WasFullyBlocked)
+            return;
+
+        if (cardSource == null && !dealer.HasPower<ThornsPower>())
             return;
 
         var creature = dealer;

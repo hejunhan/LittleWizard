@@ -1,14 +1,18 @@
 using LittleWizard.LittleWizardCode.Api;
 using LittleWizard.LittleWizardCode.Api.Powers;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace LittleWizard.LittleWizardCode.Powers.Elements;
 
 public class WaterElement : BaseElement
 {
+    private int oldReduction;
+
     public override decimal ModifyDamageAdditive(
         Creature? target,
         decimal amount,
@@ -68,5 +72,32 @@ public class WaterElement : BaseElement
                 return false;
             }
         }
+    }
+
+    public override async Task AfterPowerAmountChanged(
+        PlayerChoiceContext choiceContext,
+        PowerModel power,
+        decimal amount,
+        Creature? applier,
+        CardModel? cardSource
+    )
+    {
+        if (power != this)
+            return;
+
+        int newReduction = Amount / 2;
+        int delta = newReduction - oldReduction;
+        if (delta != 0)
+        {
+            await PowerCmd.Apply<WaterTempPower>(choiceContext, Owner, delta, applier, cardSource);
+            oldReduction = newReduction;
+        }
+    }
+
+    public override async Task AfterRemoved(Creature Owner)
+    {
+        var temp = Owner.GetPower<WaterTempPower>();
+        await PowerCmd.Remove(temp);
+        await base.AfterRemoved(Owner);
     }
 }

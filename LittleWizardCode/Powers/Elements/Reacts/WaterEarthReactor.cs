@@ -64,6 +64,9 @@ public class WaterEarthReactor : LittleWizardPower
         if (target != Owner || dealer == null || result.WasFullyBlocked)
             return;
 
+        if (cardSource == null && !dealer.HasPower<ThornsPower>())
+            return;
+
         var creature = dealer;
         if (dealer.Monster is Osty)
         {
