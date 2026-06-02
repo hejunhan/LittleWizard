@@ -131,7 +131,7 @@
     "LITTLEWIZARD-COPYING.title": "抄袭",
     "LITTLEWIZARD-COPYING.description": "从其他角色的9张牌中选择最多{Cards:diff()}张加入手牌。",
     "LITTLEWIZARD-COPYING.selectionScreenPrompt": "选择要加入手牌的牌",
-    "LITTLEWIZARD-ELEMENT_BLESSING.title": "元素庇佑",
+    "LITTLEWIZARD-ELEMENT_BLESSING.title": "元素形态",
     "LITTLEWIZARD-ELEMENT_BLESSING.description": "打出能给予[gold]元素[/gold]的卡牌时，获得{energyPrefix:energyIcons(1)}。",
     "LITTLEWIZARD-EMERGE.title": "涌现",
     "LITTLEWIZARD-EMERGE.description": "该敌人触发元素结合时，{IfUpgraded:show:有概率给予该敌人大量的随机元素|有概率给予该敌人随机元素}。",
