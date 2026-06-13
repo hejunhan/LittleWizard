@@ -11,16 +11,16 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace LittleWizard.LittleWizardCode.Cards.Common;
+namespace LittleWizard.LittleWizardCode.Cards.Uncommon;
 
 public class DestroyGrades()
-    : LittleWizardCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+    : LittleWizardCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FireElement>(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FireElement>(4)];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Fire];
 
