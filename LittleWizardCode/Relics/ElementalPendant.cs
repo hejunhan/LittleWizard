@@ -1,8 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using LittleWizard.LittleWizardCode.Api.Relics;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -14,22 +12,6 @@ public class ElementalPendant : AfterElementReactRelics
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(3)];
-    private bool _usedThisTurn;
-
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public bool UsedThisTurn
-    {
-        get => _usedThisTurn;
-        set
-        {
-            if (_usedThisTurn == value)
-            {
-                return;
-            }
-            AssertMutable();
-            _usedThisTurn = value;
-        }
-    }
 
     protected override async Task AfterElementReact(
         PlayerChoiceContext ctx,
@@ -39,21 +21,18 @@ public class ElementalPendant : AfterElementReactRelics
         CardModel? cardSource
     )
     {
-        if (owner != Owner.Creature || UsedThisTurn)
+        if (owner != Owner.Creature || Status != RelicStatus.Active)
         {
             return;
         }
         Flash();
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
-        UsedThisTurn = true;
+        Status = RelicStatus.Normal;
     }
 
-    public override Task AfterPlayerTurnStartEarly(PlayerChoiceContext choiceContext, Player player)
+    public override Task BeforeCombatStart()
     {
-        if (player == Owner)
-        {
-            UsedThisTurn = false;
-        }
+        Status = RelicStatus.Active;
         return Task.CompletedTask;
     }
 }
