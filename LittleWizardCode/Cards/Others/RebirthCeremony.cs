@@ -14,8 +14,7 @@ public class RebirthCeremony()
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HpLossVar(3)];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-        [CardKeyword.Retain, CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
