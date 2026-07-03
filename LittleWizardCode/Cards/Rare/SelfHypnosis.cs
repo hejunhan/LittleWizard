@@ -11,7 +11,7 @@ namespace LittleWizard.LittleWizardCode.Cards.Rare;
 public class SelfHypnosis() : LittleWizardCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(17, ValueProp.Move), new CardsVar(3)];
+        [new BlockVar(11, ValueProp.Move), new CardsVar(3)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -35,7 +35,7 @@ public class SelfHypnosis() : LittleWizardCard(2, CardType.Skill, CardRarity.Rar
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Block.UpgradeValueBy(3);
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
