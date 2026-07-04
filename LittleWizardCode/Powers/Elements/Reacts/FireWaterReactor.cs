@@ -67,7 +67,15 @@ public class FireWaterReactor : LittleWizardPower
             return;
         if (cardSource == null || cardSource.Type != CardType.Attack)
             return;
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unpowered, dealer, null);
+        await CreatureCmd.Damage(
+            choiceContext,
+            Owner,
+            Amount,
+            ValueProp.Unpowered,
+            dealer,
+            null,
+            null
+        );
     }
 
     public override async Task AfterPowerAmountChanged(
@@ -82,7 +90,15 @@ public class FireWaterReactor : LittleWizardPower
         {
             return;
         }
-        await CreatureCmd.Damage(choiceContext, Owner, amount, ValueProp.Unpowered, applier, null);
+        await CreatureCmd.Damage(
+            choiceContext,
+            Owner,
+            amount,
+            ValueProp.Unpowered,
+            applier,
+            null,
+            null
+        );
         await PowerCmd.Apply<StrengthPower>(
             choiceContext,
             Owner,

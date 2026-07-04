@@ -3,6 +3,7 @@ using BaseLib.Cards.Variables;
 using LittleWizard.LittleWizardCode.Api.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -35,7 +36,8 @@ public class WaterElement : BaseElement, IHasSecondAmount
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource
+        CardModel? cardSource,
+        CardPlay? cardPlay
     )
     {
         if (Owner != dealer || !props.IsPoweredAttack())

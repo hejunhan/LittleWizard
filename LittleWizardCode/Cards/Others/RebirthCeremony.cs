@@ -24,7 +24,9 @@ public class RebirthCeremony()
             Owner.Creature,
             DynamicVars.HpLoss.BaseValue,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-            this
+            Owner.Creature,
+            this,
+            cardPlay
         );
         foreach (var power in Owner.Creature.Powers)
         {

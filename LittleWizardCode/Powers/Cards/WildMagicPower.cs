@@ -1,6 +1,7 @@
 using LittleWizard.LittleWizardCode.Api.Powers;
 using LittleWizard.LittleWizardCode.Powers.Elements;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -31,12 +32,13 @@ public class WildMagicPower : LittleWizardPower
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource
+        CardModel? cardSource,
+        CardPlay? cardPlay
     )
     {
         if (dealer == Owner && props.IsPoweredAttack())
             return 2;
-        return base.ModifyDamageMultiplicative(target, amount, props, dealer, cardSource);
+        return base.ModifyDamageMultiplicative(target, amount, props, dealer, cardSource, cardPlay);
     }
 
     public override decimal ModifyPowerAmountGivenMultiplicative(

@@ -44,9 +44,17 @@ public class FireEarthReactor : LittleWizardPower
     {
         if (target != Owner)
             return;
-        if (cardSource == null || cardSource.Type != CardType.Attack)
+        if (cardSource is not { Type: CardType.Attack })
             return;
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unpowered, dealer, null);
+        await CreatureCmd.Damage(
+            choiceContext,
+            Owner,
+            Amount,
+            ValueProp.Unpowered,
+            dealer,
+            null,
+            null
+        );
     }
 
     public override async Task AfterDamageReceived(

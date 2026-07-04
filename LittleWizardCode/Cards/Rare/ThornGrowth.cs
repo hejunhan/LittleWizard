@@ -35,7 +35,9 @@ public class ThornGrowth()
                 creature,
                 DynamicVars.HpLoss.BaseValue,
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-                this
+                Owner.Creature,
+                this,
+                cardPlay
             );
             await PowerCmd.Apply<ThornsPower>(
                 choiceContext,

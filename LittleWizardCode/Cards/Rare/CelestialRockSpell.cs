@@ -35,7 +35,7 @@ public class CelestialRockSpell()
         var damageValue = DynamicVars.Damage.BaseValue;
 
         await new AttackCommand(damageValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .WithHitFx("vfx/vfx_fire_ball")
             .Targeting(target)
             .Execute(choiceContext);

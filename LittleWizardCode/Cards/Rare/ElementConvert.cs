@@ -55,13 +55,13 @@ public class ElementConvert()
         await AnimationHelper.TriggerCastAnimationOwner(this);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay()
+    protected override (PileType, CardPilePosition) GetResultPileTypeAndPositionForCardPlay()
     {
         if (!IsUpgraded)
         {
-            return base.GetResultPileTypeForCardPlay();
+            return base.GetResultPileTypeAndPositionForCardPlay();
         }
-        var result = base.GetResultPileTypeForCardPlay();
-        return result != PileType.Discard ? result : PileType.Hand;
+        var result = base.GetResultPileTypeAndPositionForCardPlay();
+        return result.Item1 != PileType.Discard ? result : (PileType.Hand, result.Item2);
     }
 }
