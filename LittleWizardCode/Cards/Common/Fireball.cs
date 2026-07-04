@@ -21,7 +21,7 @@ public class Fireball()
     protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(6, ValueProp.Move), new PowerVar<FireElement>(3)];
+        [new DamageVar(5, ValueProp.Move), new PowerVar<FireElement>(3)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Fire];
 
@@ -44,7 +44,7 @@ public class Fireball()
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars.Power<FireElement>().UpgradeValueBy(1);
     }
 }

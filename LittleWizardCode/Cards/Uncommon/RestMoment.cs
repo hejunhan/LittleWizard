@@ -14,7 +14,7 @@ public class RestMoment()
     : LittleWizardCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(12, ValueProp.Move), new EnergyVar(3)];
+        [new BlockVar(10, ValueProp.Move), new EnergyVar(3)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

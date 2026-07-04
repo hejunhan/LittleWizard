@@ -21,7 +21,7 @@ public class Earthquake()
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DamageVar(5, ValueProp.Move),
-            new PowerVar<EarthElement>(3),
+            new PowerVar<EarthElement>(2),
             new PowerVar<WeakPower>(1),
         ];
 

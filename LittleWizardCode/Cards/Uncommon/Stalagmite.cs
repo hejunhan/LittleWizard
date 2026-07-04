@@ -36,6 +36,6 @@ public class Stalagmite()
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(1);
-        DynamicVars.Power<EarthElement>().UpgradeValueBy(2);
+        DynamicVars.Power<EarthElement>().UpgradeValueBy(1);
     }
 }
