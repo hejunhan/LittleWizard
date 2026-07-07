@@ -45,7 +45,6 @@ public class Petrification()
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2);
         DynamicVars[IncreasedBlock].UpgradeValueBy(2);
     }
 

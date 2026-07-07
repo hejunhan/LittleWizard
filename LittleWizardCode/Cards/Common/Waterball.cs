@@ -21,7 +21,7 @@ public class Waterball()
     protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(8, ValueProp.Move), new PowerVar<WaterElement>(3)];
+        [new DamageVar(5, ValueProp.Move), new PowerVar<WaterElement>(3)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Water];
 
@@ -44,7 +44,7 @@ public class Waterball()
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars.Power<WaterElement>().UpgradeValueBy(2);
     }
 }
