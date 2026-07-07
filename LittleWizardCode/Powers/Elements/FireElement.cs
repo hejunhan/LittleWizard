@@ -62,7 +62,7 @@ public class FireElement : BaseElement
         HealthBarForecastContext context
     )
     {
-        var damage = Amount == 1 ? 1 : Amount / 2;
+        var damage = GetDamage(this);
         if (damage <= 0)
             yield break;
         yield return new HealthBarForecastSegment(
@@ -76,13 +76,11 @@ public class FireElement : BaseElement
 
     private static int GetDamage(PowerModel powerModel)
     {
-        var damage = powerModel.Amount == 1 ? 1 : powerModel.Amount / 2;
         var playerCreatures = powerModel.Owner.CombatState?.PlayerCreatures;
-        if (playerCreatures == null)
-            return damage;
-
-        var hasSkyfire = playerCreatures.Any(creature => creature.HasPower<SkyfirePower>());
-
-        return hasSkyfire ? damage * 2 : damage;
+        var hasSkyfire =
+            playerCreatures != null
+            && playerCreatures.Any(creature => creature.HasPower<SkyfirePower>());
+        var amount = hasSkyfire ? powerModel.Amount * 2 : powerModel.Amount;
+        return amount == 1 ? 1 : amount / 2;
     }
 }
