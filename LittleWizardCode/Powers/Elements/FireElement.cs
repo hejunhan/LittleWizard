@@ -2,6 +2,7 @@ using BaseLib.Cards.Variables;
 using BaseLib.Hooks;
 using Godot;
 using LittleWizard.LittleWizardCode.Api.Powers;
+using LittleWizard.LittleWizardCode.Powers.Cards;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -75,8 +76,13 @@ public class FireElement : BaseElement
 
     private static int GetDamage(PowerModel powerModel)
     {
-        if (powerModel.Amount == 1)
-            return 1;
-        return powerModel.Amount / 2;
+        var damage = powerModel.Amount == 1 ? 1 : powerModel.Amount / 2;
+        var playerCreatures = powerModel.Owner.CombatState?.PlayerCreatures;
+        if (playerCreatures == null)
+            return damage;
+
+        var hasSkyfire = playerCreatures.Any(creature => creature.HasPower<SkyfirePower>());
+
+        return hasSkyfire ? damage * 2 : damage;
     }
 }
