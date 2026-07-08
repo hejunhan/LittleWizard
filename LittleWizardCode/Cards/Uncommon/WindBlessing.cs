@@ -19,6 +19,7 @@ public class WindBlessing()
     {
         await CommonActions.Apply<DexterityPower>(choiceContext, this, cardPlay);
     }
+
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
