@@ -21,7 +21,7 @@ public class Fireline()
     private const string FireElementPerExhaustedCard = "FireElementPerExhaustedCard";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<FireElement>(1), new DynamicVar(FireElementPerExhaustedCard, 2)];
+        [new PowerVar<FireElement>(1), new DynamicVar(FireElementPerExhaustedCard, 1)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Fire];
 
