@@ -206,7 +206,7 @@
     "LITTLEWIZARD-BURNING_TRAIL.title": "Burning Trail",
     "LITTLEWIZARD-BURNING_TRAIL.description": "Apply {FireElement:diff()} [gold]Fire Element[/gold].\nWhenever you gain [gold]Block[/gold], if this card is in your [gold]Draw Pile[/gold] or [gold]Hand[/gold], play it.",
     "LITTLEWIZARD-FIRELINE.title": "Fireline",
-    "LITTLEWIZARD-FIRELINE.description": "[gold]Exhaust[/gold] 1 card.\nApply {FireElement:diff()} [gold]Fire Element[/gold] to ALL enemies.\nFor each card in your [gold]Exhaust Pile[/gold], apply {FireElementPerExhaustedCard:diff()} additional [gold]Fire Element[/gold].",
+    "LITTLEWIZARD-FIRELINE.description": "[gold]Exhaust[/gold] 1 card.\nApply {CalculationBase:diff()} [gold]Fire Element[/gold] to ALL enemies.\nFor each card in your [gold]Exhaust Pile[/gold], apply {CalculationExtra:diff()} additional [gold]Fire Element[/gold].{InCombat:\n(Apply {FirelineFireElement:diff()} [gold]Fire Element[/gold].)|}",
     "LITTLEWIZARD-WIND_BLESSING.title": "Wind's Blessing",
     "LITTLEWIZARD-WIND_BLESSING.description": "Gain {DexterityPower:diff()} [gold]Dexterity[/gold]."
 }

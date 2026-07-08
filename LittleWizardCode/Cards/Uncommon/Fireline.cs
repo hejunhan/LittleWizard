@@ -20,8 +20,17 @@ public class Fireline()
 
     private const string FireElementPerExhaustedCard = "FireElementPerExhaustedCard";
 
+    private const string FirelineFireElement = "FirelineFireElement";
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<FireElement>(1), new DynamicVar(FireElementPerExhaustedCard, 2)];
+        [
+            new PowerVar<FireElement>(1),
+            new CalculationBaseVar(1),
+            new CalculationExtraVar(1),
+            new CalculatedVar(FirelineFireElement).WithMultiplier(
+                (card, _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count
+            ),
+        ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Fire];
 
@@ -38,14 +47,10 @@ public class Fireline()
             await CardCmd.Exhaust(choiceContext, cardToExhaust);
         }
 
-        var amount =
-            DynamicVars.Power<FireElement>().BaseValue
-            + PileType.Exhaust.GetPile(Owner).Cards.Count
-                * DynamicVars[FireElementPerExhaustedCard].BaseValue;
         await PowerCmd.Apply<FireElement>(
             choiceContext,
             CombatState!.HittableEnemies,
-            amount,
+            ((CalculatedVar)DynamicVars[FirelineFireElement]).Calculate(null),
             Owner.Creature,
             this
         );
@@ -53,6 +58,6 @@ public class Fireline()
 
     protected override void OnUpgrade()
     {
-        DynamicVars[FireElementPerExhaustedCard].UpgradeValueBy(1);
+        DynamicVars.CalculationExtra.UpgradeValueBy(1);
     }
 }
