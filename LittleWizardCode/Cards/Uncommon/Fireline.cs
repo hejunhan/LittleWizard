@@ -2,7 +2,6 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using LittleWizard.LittleWizardCode.Api;
 using LittleWizard.LittleWizardCode.Api.Cards;
-using LittleWizard.LittleWizardCode.Api.DynamicVars;
 using LittleWizard.LittleWizardCode.Api.Extensions;
 using LittleWizard.LittleWizardCode.Powers.Elements;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -19,8 +18,10 @@ public class Fireline()
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
 
+    private const string FireElementPerExhaustedCard = "FireElementPerExhaustedCard";
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<FireElement>(1), new CalculationExtraVar(2)];
+        [new PowerVar<FireElement>(1), new DynamicVar(FireElementPerExhaustedCard, 2)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipsValue.Fire];
 
@@ -39,7 +40,8 @@ public class Fireline()
 
         var amount =
             DynamicVars.Power<FireElement>().BaseValue
-            + PileType.Exhaust.GetPile(Owner).Cards.Count * DynamicVars.CalculationExtra.BaseValue;
+            + PileType.Exhaust.GetPile(Owner).Cards.Count
+                * DynamicVars[FireElementPerExhaustedCard].BaseValue;
         await PowerCmd.Apply<FireElement>(
             choiceContext,
             CombatState!.HittableEnemies,
@@ -51,6 +53,6 @@ public class Fireline()
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationExtra.UpgradeValueBy(1);
+        DynamicVars[FireElementPerExhaustedCard].UpgradeValueBy(1);
     }
 }

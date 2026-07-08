@@ -17,15 +17,8 @@ public class WindBlessing()
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<DexterityPower>(
-            choiceContext,
-            Owner.Creature,
-            DynamicVars.Power<DexterityPower>().BaseValue,
-            Owner.Creature,
-            this
-        );
+        await CommonActions.Apply<DexterityPower>(choiceContext, this, cardPlay);
     }
-
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
