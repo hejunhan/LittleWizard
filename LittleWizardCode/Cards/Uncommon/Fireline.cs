@@ -18,8 +18,6 @@ public class Fireline()
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTagExtensions.LittleWizardElement];
 
-    private const string FireElementPerExhaustedCard = "FireElementPerExhaustedCard";
-
     private const string FirelineFireElement = "FirelineFireElement";
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
